@@ -1,0 +1,119 @@
+name: Builds
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize]
+    paths-ignore:
+      - '**/*.md'
+  push:
+    # Build for the master branch.
+    branches:
+      - master
+  release:
+    # Publish released commit as Docker `latest` and `git_revision` images.
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Ref to build the binary [default: latest master; examples: v0.10.0, 0a4ff9d3e4a9ab432fd5812eb18c98e03b5a7432]'
+        required: false
+        default: ''
+      push_image:
+        description: 'Push images to DockerHub [default: false; examples: true, false]'
+        required: false
+        default: 'false'
+      use_latest_tag:
+        description: 'Use `latest` tag while pushing images to DockerHub [default: false; examples: true, false]'
+        required: false
+        default: 'false'
+
+jobs:
+  build_bin:
+    name: Build binary
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        go_os: [ linux, darwin ]
+        go_arch: [ amd64, arm64 ]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref }}
+          fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          cache: true
+          go-version: '1.22'
+
+      - name: Check version
+        run: if [[ $(make version) == *"dirty"* ]]; then exit 1; fi
+
+      - name: Build CLI
+        run: BUILD_OS=${{ matrix.go_os }} BUILD_ARCH=${{ matrix.go_arch }} make
+
+      - name: Rename CLI binary
+        run: mv ./bin/neofs-rest-gw* ./bin/neofs-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}${{ (matrix.go_os == 'windows' && '.exe') || '' }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: neofs-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}
+          path: ./bin/neofs-rest-gw*
+          if-no-files-found: error
+
+      - name: Attach binary to the release as an asset
+        if: ${{ github.event_name == 'release' }}
+        run: gh release upload ${{ github.event.release.tag_name }} ./bin/neofs-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}${{ (matrix.go_os == 'windows' && '.exe') || '' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build_image:
+    needs: build_bin
+    name: Build Docker image
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref }}
+          fetch-depth: 0
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.push_image == 'true') }}
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Set version
+        id: setver
+        run: echo version=`make version` >> $GITHUB_OUTPUT
+
+      - name: Set latest tag
+        id: setlatest
+        if: ${{ (github.event_name == 'release' && github.event.release.target_commitish == 'master') || (github.event_name == 'workflow_dispatch' && github.event.inputs.use_latest_tag == 'true') }}
+        run: echo "latest=,nspccdev/neofs-rest-gw:latest" >> $GITHUB_OUTPUT
+
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.push_image == 'true') }}
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            REPO=github.com/${{ github.repository }}
+            VERSION=${{ steps.setver.outputs.version }}
+          tags: nspccdev/neofs-rest-gw:${{ steps.setver.outputs.version }}${{ steps.setlatest.outputs.latest }}

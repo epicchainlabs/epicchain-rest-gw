@@ -1,0 +1,76 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize]
+    paths-ignore:
+      - '**/*.md'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go from go.mod
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+
+  cover:
+    name: Coverage
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          cache: true
+          go-version: '1.22'
+
+      - name: Test and write coverage profile
+        run: make cover
+
+      - name: Upload coverage results to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: nspcc-dev/neofs-rest-gw
+          fail_ci_if_error: true
+          files: ./coverage.txt
+          verbose: true
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        go_versions: [ '1.20', '1.21' ] # The latest is used by Coverage already.
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          cache: true
+          go-version: '${{ matrix.go_versions }}'
+
+      - name: Run tests
+        run: make test
