@@ -58,18 +58,18 @@ jobs:
         run: BUILD_OS=${{ matrix.go_os }} BUILD_ARCH=${{ matrix.go_arch }} make
 
       - name: Rename CLI binary
-        run: mv ./bin/neofs-rest-gw* ./bin/neofs-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}${{ (matrix.go_os == 'windows' && '.exe') || '' }}
+        run: mv ./bin/epicchain-rest-gw* ./bin/epicchain-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}${{ (matrix.go_os == 'windows' && '.exe') || '' }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: neofs-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}
-          path: ./bin/neofs-rest-gw*
+          name: epicchain-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}
+          path: ./bin/epicchain-rest-gw*
           if-no-files-found: error
 
       - name: Attach binary to the release as an asset
         if: ${{ github.event_name == 'release' }}
-        run: gh release upload ${{ github.event.release.tag_name }} ./bin/neofs-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}${{ (matrix.go_os == 'windows' && '.exe') || '' }}
+        run: gh release upload ${{ github.event.release.tag_name }} ./bin/epicchain-rest-gw-${{ matrix.go_os }}-${{ matrix.go_arch }}${{ (matrix.go_os == 'windows' && '.exe') || '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -104,7 +104,7 @@ jobs:
       - name: Set latest tag
         id: setlatest
         if: ${{ (github.event_name == 'release' && github.event.release.target_commitish == 'master') || (github.event_name == 'workflow_dispatch' && github.event.inputs.use_latest_tag == 'true') }}
-        run: echo "latest=,nspccdev/neofs-rest-gw:latest" >> $GITHUB_OUTPUT
+        run: echo "latest=,nspccdev/epicchain-rest-gw:latest" >> $GITHUB_OUTPUT
 
       - name: Build and push image
         uses: docker/build-push-action@v5
@@ -116,4 +116,4 @@ jobs:
           build-args: |
             REPO=github.com/${{ github.repository }}
             VERSION=${{ steps.setver.outputs.version }}
-          tags: nspccdev/neofs-rest-gw:${{ steps.setver.outputs.version }}${{ steps.setlatest.outputs.latest }}
+          tags: nspccdev/epicchain-rest-gw:${{ steps.setver.outputs.version }}${{ steps.setlatest.outputs.latest }}

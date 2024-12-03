@@ -8,7 +8,7 @@ BUILD_ARCH ?= amd64
 GO_VERSION ?= 1.22
 LINT_VERSION ?= v1.49.0
 
-HUB_IMAGE ?= nspccdev/neofs-rest-gw
+HUB_IMAGE ?= nspccdev/epicchain-rest-gw
 HUB_TAG ?= "$(shell echo ${VERSION} | sed 's/^v//')"
 
 UNAME = "$(shell uname)/$(shell uname -m)"
@@ -24,7 +24,7 @@ endif
 # List of binaries to build. For now just one.
 BINDIR = bin
 DIRS = "$(BINDIR)"
-BINS = "$(BINDIR)/neofs-rest-gw"
+BINS = "$(BINDIR)/epicchain-rest-gw"
 
 .PHONY: help all dep clean format test cover lint docker/lint
 
@@ -38,7 +38,7 @@ $(BINS): $(DIRS) dep
 	GOARCH=$(BUILD_ARCH) \
 	go build -v -trimpath \
 	-ldflags "-X main.Version=$(VERSION)" \
-	-o $@ ./cmd/neofs-rest-gw
+	-o $@ ./cmd/epicchain-rest-gw
 
 $(DIRS):
 	@echo "⇒ Ensure dir: $@"

@@ -23,7 +23,7 @@ everyone. Please follow the guidelines:
 
 ## Development Workflow
 
-Start by forking the `neofs-rest-gw` repository, make changes in a branch and then
+Start by forking the `epicchain-rest-gw` repository, make changes in a branch and then
 send a pull request. We encourage pull requests to discuss code changes. Here
 are the steps in details:
 
@@ -38,7 +38,7 @@ $ git clone https://github.com/epicchainlabs/epicchain-rest-gw
 
 ### Set up git remote as ``upstream``
 ```sh
-$ cd neofs-rest-gw
+$ cd epicchain-rest-gw
 $ git remote add upstream https://github.com/epicchainlabs/epicchain-rest-gw
 $ git fetch upstream
 $ git merge upstream/master
