@@ -6,10 +6,10 @@ import (
 	"math"
 	"testing"
 
-	"github.com/nspcc-dev/neo-go/pkg/crypto/keys"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-rest-gw/internal/util"
-	"github.com/nspcc-dev/neofs-sdk-go/user"
+	"github.com/epicchainlabs/epicchain-go/pkg/crypto/keys"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-rest-gw/internal/util"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/user"
 	"github.com/stretchr/testify/require"
 )
 

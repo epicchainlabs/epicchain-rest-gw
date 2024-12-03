@@ -5,13 +5,13 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-sdk-go/bearer"
-	apistatus "github.com/nspcc-dev/neofs-sdk-go/client/status"
-	cid "github.com/nspcc-dev/neofs-sdk-go/container/id"
-	"github.com/nspcc-dev/neofs-sdk-go/eacl"
-	"github.com/nspcc-dev/neofs-sdk-go/object"
-	"github.com/nspcc-dev/neofs-sdk-go/session"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/bearer"
+	apistatus "github.com/epicchainlabs/epicchainpicchain-sdk-go/client/status"
+	cid "github.com/epicchainlabs/epicchainpicchain-sdk-go/container/id"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/eacl"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/object"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/session"
 )
 
 // ToNativeAction converts [apiserver.Action] to appropriate [eacl.Action].

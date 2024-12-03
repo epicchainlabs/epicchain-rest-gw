@@ -7,14 +7,14 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/nspcc-dev/neo-go/pkg/crypto/keys"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-rest-gw/internal/util"
-	bearertest "github.com/nspcc-dev/neofs-sdk-go/bearer/test"
-	neofscrypto "github.com/nspcc-dev/neofs-sdk-go/crypto"
-	neofsecdsa "github.com/nspcc-dev/neofs-sdk-go/crypto/ecdsa"
-	"github.com/nspcc-dev/neofs-sdk-go/crypto/test"
-	"github.com/nspcc-dev/neofs-sdk-go/user"
+	"github.com/epicchainlabs/epicchain-go/pkg/crypto/keys"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-rest-gw/internal/util"
+	bearertest "github.com/epicchainlabs/epicchainpicchain-sdk-go/bearer/test"
+	neofscrypto "github.com/epicchainlabs/epicchainpicchain-sdk-go/crypto"
+	neofsecdsa "github.com/epicchainlabs/epicchainpicchain-sdk-go/crypto/ecdsa"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/crypto/test"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/user"
 	"github.com/stretchr/testify/require"
 )
 

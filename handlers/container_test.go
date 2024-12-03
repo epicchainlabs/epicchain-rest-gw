@@ -6,14 +6,14 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/nspcc-dev/neo-go/pkg/crypto/keys"
-	neofscrypto "github.com/nspcc-dev/neofs-sdk-go/crypto"
-	neofsecdsa "github.com/nspcc-dev/neofs-sdk-go/crypto/ecdsa"
-	"github.com/nspcc-dev/neofs-sdk-go/crypto/test"
-	"github.com/nspcc-dev/neofs-sdk-go/session"
-	sessiontest "github.com/nspcc-dev/neofs-sdk-go/session/test"
-	"github.com/nspcc-dev/neofs-sdk-go/user"
-	usertest "github.com/nspcc-dev/neofs-sdk-go/user/test"
+	"github.com/epicchainlabs/epicchain-go/pkg/crypto/keys"
+	neofscrypto "github.com/epicchainlabs/epicchain-sdk-go/crypto"
+	neofsecdsa "github.com/epicchainlabs/epicchainpicchain-sdk-go/crypto/ecdsa"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/crypto/test"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/session"
+	sessiontest "github.com/epicchainlabs/epicchainpicchain-sdk-go/session/test"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/user"
+	usertest "github.com/epicchainlabs/epicchainpicchain-sdk-go/user/test"
 	"github.com/stretchr/testify/require"
 )
 

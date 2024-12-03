@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-sdk-go/client"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/client"
 )
 
 func (a *RestAPI) GetNetworkInfo(ctx echo.Context) error {

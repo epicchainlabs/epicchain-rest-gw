@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/labstack/echo/v4"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
 )
 
 const (

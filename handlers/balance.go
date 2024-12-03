@@ -5,9 +5,9 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo/v4"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-sdk-go/client"
-	"github.com/nspcc-dev/neofs-sdk-go/user"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/client"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/user"
 )
 
 // GetBalance handler that get balance from NeoFS.

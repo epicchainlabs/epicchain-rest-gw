@@ -11,8 +11,8 @@ import (
 
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/labstack/echo/v4"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-rest-gw/static/docs"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-rest-gw/static/docs"
 	middleware "github.com/oapi-codegen/echo-middleware"
 	"go.uber.org/zap"
 )

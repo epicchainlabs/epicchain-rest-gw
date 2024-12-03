@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-sdk-go/client"
-	"github.com/nspcc-dev/neofs-sdk-go/container/acl"
-	"github.com/nspcc-dev/neofs-sdk-go/object"
-	"github.com/nspcc-dev/neofs-sdk-go/pool"
-	"github.com/nspcc-dev/neofs-sdk-go/session"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/client"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/container/acl"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/object"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/pool"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/session"
 	"go.uber.org/zap"
 )
 

@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/nspcc-dev/neofs-sdk-go/object"
+	"github.com/epicchainlabs/epicchain-sdk-go/object"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 )

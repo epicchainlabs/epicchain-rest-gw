@@ -157,7 +157,7 @@ type ContainerList struct {
 // <h5>Placement policy</h5>
 // <p>Placement policy allows you control where and how the container (and its object) is stored. For example, you want to store 3 copies of every object, so you can use the following policy:</p>
 // <pre><code>REP 3</code></pre>
-// <p><a href="https://github.com/nspcc-dev/neofs-spec/blob/master/01-arch/02-policy.md">More about policy</a>.</p>
+// <p><a href="https://github.com/epicchainlabs/epicchain-spec/blob/master/01-arch/02-policy.md">More about policy</a>.</p>
 //
 // <h5>Basic ACL</h5>
 // <p>Basic ACL is a part of the container structure, and it is always created simultaneously with the container. Therefore, it is never subject to any changes. It is a 32-bit integer with a bit field in the following format:</p>
@@ -218,7 +218,7 @@ type ContainerList struct {
 // </table>
 // <p>To upload objects with a bearer token your container must have Bearer bits set. For example, you can use <code>0x0FBFBFFF</code> or predefined <code>eacl-public-read-write</code> values.</p>
 // <p>Also, don't forget to set appropriate eACL to restrict your container.</p>
-// <p><a href="https://github.com/nspcc-dev/neofs-spec/blob/master/01-arch/07-acl.md">More about ACL</a>.</p>
+// <p><a href="https://github.com/epicchainlabs/epicchain-spec/blob/master/01-arch/07-acl.md">More about ACL</a>.</p>
 type ContainerPutInfo struct {
 	Attributes      []Attribute `json:"attributes,omitempty"`
 	BasicAcl        string      `json:"basicAcl,omitempty"`
@@ -235,7 +235,7 @@ type Eacl struct {
 // ErrorResponse <p>Error response.</p>
 // <p>More about NeoFS status code you can find
 //
-//	<a href="https://github.com/nspcc-dev/neofs-spec/blob/master/20-api-v2/status.md">here</a>.</p>
+//	<a href="https://github.com/epicchainlabs/epicchain-spec/blob/master/20-api-v2/status.md">here</a>.</p>
 type ErrorResponse struct {
 	Code    uint32 `json:"code,omitempty"`
 	Message string `json:"message"`

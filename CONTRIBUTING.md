@@ -3,8 +3,8 @@
 First, thank you for contributing! We love and encourage pull requests from
 everyone. Please follow the guidelines:
 
-- Check the open [issues](https://github.com/nspcc-dev/neofs-rest-gw/issues) and
-  [pull requests](https://github.com/nspcc-dev/neofs-rest-gw/pulls) for existing
+- Check the open [issues](https://github.com/epicchainlabs/epicchain-rest-gw/issues) and
+  [pull requests](https://github.com/epicchainlabs/epicchain-rest-gw/pulls) for existing
   discussions.
 
 - Open an issue first, to discuss a new feature or enhancement.
@@ -28,18 +28,18 @@ send a pull request. We encourage pull requests to discuss code changes. Here
 are the steps in details:
 
 ### Set up your GitHub Repository
-Fork [NeoFS REST Gateway upstream](https://github.com/nspcc-dev/neofs-rest-gw/fork) source
+Fork [NeoFS REST Gateway upstream](https://github.com/epicchainlabs/epicchain-rest-gw/fork) source
 repository to your own personal repository. Copy the URL of your fork (you will
 need it for the `git clone` command below).
 
 ```sh
-$ git clone https://github.com/nspcc-dev/neofs-rest-gw
+$ git clone https://github.com/epicchainlabs/epicchain-rest-gw
 ```
 
 ### Set up git remote as ``upstream``
 ```sh
 $ cd neofs-rest-gw
-$ git remote add upstream https://github.com/nspcc-dev/neofs-rest-gw
+$ git remote add upstream https://github.com/epicchainlabs/epicchain-rest-gw
 $ git fetch upstream
 $ git merge upstream/master
 ...

@@ -9,12 +9,12 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-rest-gw/internal/util"
-	"github.com/nspcc-dev/neofs-sdk-go/client"
-	neofscrypto "github.com/nspcc-dev/neofs-sdk-go/crypto"
-	"github.com/nspcc-dev/neofs-sdk-go/pool"
-	"github.com/nspcc-dev/neofs-sdk-go/user"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-rest-gw/internal/util"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/client"
+	neofscrypto "github.com/epicchainlabs/epicchainpicchain-sdk-go/crypto"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/pool"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/user"
 )
 
 const defaultTokenExpDuration = 100 // in epoch

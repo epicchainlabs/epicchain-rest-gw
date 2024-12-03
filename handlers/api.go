@@ -7,13 +7,13 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
-	"github.com/nspcc-dev/neo-go/pkg/crypto/keys"
-	"github.com/nspcc-dev/neofs-rest-gw/handlers/apiserver"
-	"github.com/nspcc-dev/neofs-rest-gw/internal/util"
-	"github.com/nspcc-dev/neofs-rest-gw/metrics"
-	"github.com/nspcc-dev/neofs-sdk-go/pool"
-	"github.com/nspcc-dev/neofs-sdk-go/session"
-	"github.com/nspcc-dev/neofs-sdk-go/user"
+	"github.com/epicchainlabs/epicchain-go/pkg/crypto/keys"
+	"github.com/epicchainlabs/epicchain-rest-gw/handlers/apiserver"
+	"github.com/epicchainlabs/epicchainpicchain-rest-gw/internal/util"
+	"github.com/epicchainlabs/epicchainpicchain-rest-gw/metrics"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/pool"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/session"
+	"github.com/epicchainlabs/epicchainpicchain-sdk-go/user"
 	"go.uber.org/zap"
 )
 
